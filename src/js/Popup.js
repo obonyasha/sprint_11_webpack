@@ -6,18 +6,6 @@ class Popup {
     userFormValidator = null;
     cardFormValidator = null;
 
-    /*  Можно лучше: В качестве параметров передавайте не переменные, а объект
-    *  если вы в ходе развития проекта захотите добавить переменных, то вам придётся менять код во многих местах 
-    *  https: //refactoring.guru/ru/smells/long-parameter-list 
-    * Как пример:  
-     const myObject = {name:"test", url : "http//:ya.ru"}
-     function myFunction(param)
-     {
-         param.name;
-         param.url;
-     }
-     myFunction(myObject)
-    */
     constructor(element, nameClassCloseElement, nameClassOpenElem, showPopupClassName, userProfile, userFormValidator, cardFormValidator) {
 
         this.showPopupClassName = showPopupClassName;

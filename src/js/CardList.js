@@ -5,15 +5,15 @@ class CardList {
     this.api = api;
   }
 
-  addCard(name, link, likes=[]) {
-    const temopolateCard = this.card.create({ name: name, link: link, likes: likes });
+  addCard(name, link) {
+    const temopolateCard = this.card.create({ name: name, link: link });
     this.container.insertAdjacentHTML('beforeend', temopolateCard);
   }
 
   render() {
     this.api.getInitialCards().then(res => {
       for (const element of res) {
-        this.addCard(element.name, element.link, element.likes);
+        this.addCard(element.name, element.link);
       }
     });
   }

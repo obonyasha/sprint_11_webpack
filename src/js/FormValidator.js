@@ -59,5 +59,3 @@ class FormValidator {
         element.textContent = '';
     }
 }
-
-// надо исправить, перенесите это в script.js

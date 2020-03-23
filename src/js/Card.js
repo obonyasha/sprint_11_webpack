@@ -28,7 +28,6 @@ class Card {
                                 <h3 class="place-card__name">${data.name}</h3>
                                 <div class="like-container">
                                     <button class="place-card__like-icon"></button>
-                                    <p class="place-card__like-counter">${data.likes.length}</p>
                                 </div>
                                 
                             </div>
