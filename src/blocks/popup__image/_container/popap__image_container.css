@@ -1,0 +1,17 @@
+.popup__image_container {
+    max-width: 80vh;
+    max-height: 80vh;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+  
+  @media screen and (max-width: 540px) {
+    .popup__image_container  {
+      width: calc(100% - 60px);
+    }
+  }
+  

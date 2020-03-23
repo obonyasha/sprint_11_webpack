@@ -1,0 +1,14 @@
+.error-message {
+    color: #FF0000;;
+    font-size: 12px;
+    line-height: 15px;
+    transition: .3s;
+    padding: 0px;
+    opacity: 0;
+  }
+  
+  .input-container__invalid .error-message {
+    padding: 10px;
+    opacity: 1;
+  }
+  
