@@ -2,6 +2,9 @@ const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
+const webpack = require('webpack');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = {
     entry: { main: './src/index.js' },
@@ -10,14 +13,35 @@ module.exports = {
         filename: '[name].[chunkhash].js'
     },
     module: {
-        rules: [{ // тут описываются правила
-            test: /\.js$/, // регулярное выражение, которое ищет все js файлы
-            use: { loader: "babel-loader" }, // весь JS обрабатывается пакетом babel-loader
-            exclude: /node_modules/ // исключает папку node_modules
+        rules: [{
+            test: /\.js$/,
+            use: { loader: "babel-loader" },
+            exclude: /node_modules/
         },
         {
-            test: /\.css$/, // применять это правило только к CSS-файлам
-            use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'] // к этим файлам нужно применить пакеты, которые мы уже установили
+            test: /\.css$/,
+            use: [
+                (isDev ? 'style-loader' : MiniCssExtractPlugin.loader),
+                'css-loader',
+                'postcss-loader'
+            ]
+        },
+        {
+            test: /\.(png|jpg|gif|ico|svg)$/,
+            use: [
+                'file-loader?name=./images/[name].[ext]',
+                {
+                    loader: 'image-webpack-loader',
+                    options: {
+                        bypassOnDebug: true,
+                        disable: true,
+                    }
+                },
+            ]
+        },
+        {
+            test: /\.(eot|ttf|woff|woff2)$/,
+            loader: 'file-loader?name=./vendor/[name].[ext]'
         }
         ]
     },
@@ -25,12 +49,23 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'style.[contenthash].css'
         }),
-        new HtmlWebpackPlugin({
-            inject: false, // стили НЕ нужно прописывать внутри тегов
-            hash: true, // для страницы нужно считать хеш
-            template: './src/index.html', // откуда брать образец для сравнения с текущим видом проекта
-            filename: 'index.html' // имя выходного файла, то есть того, что окажется в папке dist после сборки
+        new OptimizeCssAssetsPlugin({
+            assetNameRegExp: /\.css$/g,
+            cssProcessor: require('cssnano'),
+            cssProcessorPluginOptions: {
+                preset: ['default'],
+            },
+            canPrint: true
         }),
-        new WebpackMd5Hash()
+        new HtmlWebpackPlugin({
+            inject: false,
+            hash: true,
+            template: './src/index.html',
+            filename: 'index.html'
+        }),
+        new WebpackMd5Hash(),
+        new webpack.DefinePlugin({
+            'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+        })
     ]
 }
