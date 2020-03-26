@@ -7,6 +7,7 @@
   <title>Mesto</title>
   <link rel="stylesheet" href="./vendor/normalize.css">
   <link rel="stylesheet" href="./pages/index.css">
+  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.main.css %>">
 </head>
 <body>
   <div class="root">
@@ -70,6 +71,7 @@
       </div>
     </div>
   </div>
+  <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
   <script src="./js/Api.js"></script> 
   <script src="./js/Card.js"></script>
   <script src="./js/CardList.js"></script>
