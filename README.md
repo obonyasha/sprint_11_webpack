@@ -1,6 +1,6 @@
 # Инфраструктура веб-приложений
 ## Степанова Татьяна  
-## https://github.com/obonyasha/sprint_11_webpack *ссылка на проект*
+## https://github.com/obonyasha/sprint_11_webpack
 
 Актуальная версия проекта - **v0.0.1**  
 
