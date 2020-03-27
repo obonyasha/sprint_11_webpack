@@ -1,5 +1,5 @@
 
-class Card {
+export default class Card {
 
     constructor() {
         this.likeCounter = document.querySelector('.place-card__like-counter');

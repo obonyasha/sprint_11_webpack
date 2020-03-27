@@ -1,4 +1,13 @@
 
+import Api from './Api';
+import Card from './Card';
+import CardList from './CardList';
+import UserInfo from './UserInfo';
+import FormValidator from './FormValidator';
+import Popup from './Popup';
+import PopupImg from './PopupImg';
+
+
 const api = new Api({
   baseUrl: 'https://praktikum.tk/cohort8',
   headers: {
@@ -8,7 +17,7 @@ const api = new Api({
 });
 
 //создание карточки
-const card = new Card(api)
+const card = new Card();
 
 //добавление карточки
 const cardForm = document.forms.new;
