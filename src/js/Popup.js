@@ -1,11 +1,4 @@
-class Popup {
-
-    popupElement = null;
-    showPopupClassName = null;
-    userProfile = null;
-    userFormValidator = null;
-    cardFormValidator = null;
-
+export default class Popup {
     constructor(element, nameClassCloseElement, nameClassOpenElem, showPopupClassName, userProfile, userFormValidator, cardFormValidator) {
 
         this.showPopupClassName = showPopupClassName;

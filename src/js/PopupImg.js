@@ -1,6 +1,4 @@
-class PopupImg {
-    popupImg = null;
-    nameLinkImg = null;
+export default class PopupImg {
     constructor(element, linkNameValue) {
         this.popupImg = element;
         this.nameLinkImg = linkNameValue;

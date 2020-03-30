@@ -1,4 +1,4 @@
-class UserInfo {
+export default class UserInfo {
 
   constructor(api) {
     this.userForm = document.forms.profile;

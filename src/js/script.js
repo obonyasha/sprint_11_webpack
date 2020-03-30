@@ -1,6 +1,16 @@
 
+import Api from './Api';
+import Card from './Card';
+import CardList from './CardList';
+import UserInfo from './UserInfo';
+import FormValidator from './FormValidator';
+import Popup from './Popup';
+import PopupImg from './PopupImg';
+
+const serverUrl = process.env.NODE_ENV === 'development' ? 'http://praktikum.tk/cohort8' : 'https://praktikum.tk/cohort8';
+
 const api = new Api({
-  baseUrl: 'https://praktikum.tk/cohort8',
+  baseUrl: serverUrl,
   headers: {
     authorization: '967f131c-a33f-4b54-adda-a72b03d43d19',
     'Content-Type': 'application/json'
@@ -8,7 +18,7 @@ const api = new Api({
 });
 
 //создание карточки
-const card = new Card(api)
+const card = new Card();
 
 //добавление карточки
 const cardForm = document.forms.new;

@@ -1,10 +1,9 @@
 
-class Card {
+export default class Card {
 
     constructor() {
         this.likeCounter = document.querySelector('.place-card__like-counter');
         this.valueLikeCounter = [];
-        this.api = api;
     }
     like(event) {
         if (event.target.classList.contains('place-card__like-icon')) {
